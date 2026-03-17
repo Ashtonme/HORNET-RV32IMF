@@ -1,6 +1,13 @@
-# 🐝 HORNET-RV32IMF: A High-Performance RISC-V SoC for Edge AI
+# HORNET-RV32IMF: A RV32IMF RISC-V SoC
 
-**HORNET-RV32IMF** is an academic-grade, 5-stage pipelined RISC-V soft-core processor designed for high-efficiency floating-point arithmetic and Edge AI applications. It implements the **RV32IMF** Instruction Set Architecture (ISA) and is optimized for deployment on Xilinx FPGAs, specifically the Nexys-4-DDR.
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![Hardware](https://img.shields.io/badge/Target-Nexys%20Video%20%7C%20Nexys--4--DDR-blue)
+![ISA](https://img.shields.io/badge/ISA-RV32IMF-orange)
+![Toolchain](https://img.shields.io/badge/Vivado-2025.2-red)
+
+**HORNET-RV32IMF** is an academic-grade, 5-stage pipelined RISC-V soft-core processor designed for high-efficiency floating-point arithmetic and Edge AI applications. It implements the **RV32IMF** Instruction Set Architecture (ISA) and is optimized for deployment across Xilinx Artix-7 platforms, including the Nexys Video and Nexys-4-DDR.
+
+---
 
 
 
