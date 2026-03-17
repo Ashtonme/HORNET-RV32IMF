@@ -38,7 +38,7 @@ begin
 				$finish();
 			end
 				
-			else if(wb_dat_i == 32'd31)
+			else if(wb_dat_i == 32'd13)
 			begin
 				$display("Failure!\n");
 				$finish();
