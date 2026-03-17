@@ -17,7 +17,7 @@
 
 This project is the result of collaborative engineering at the **Istanbul Technical University (ITU)** and the **GSTL Lab**.
 
-### 🎓 Academic Advisor & Principal Investigator
+### 🎓 Academic Advisor
 * **Prof. Dr. Sıddıka Berna Örs Yalçın** - [ITU Academic Profile](https://web.itu.edu.tr/~orssi/)
 
 ### 🏛️ Core Creators
@@ -56,8 +56,8 @@ The verification methodologies used in this core are detailed in the following c
 | **ISA** | RV32IMF (Integer, Multiply/Divide, Single-Precision Floating Point) |
 | **Pipeline** | 5-Stage In-Order |
 | **FPU** | IEEE-754 Single-Precision Hardware Unit |
-| **Max Frequency** | 26.25 MHz (Target: Nexys-4-DDR) |
-| **Interconnect** | Wishbone B4 Compliant |
+| **Max Frequency** | 26.25 MHz (Target: Nexys-4-DDR & Nexys Video) |
+| **Interconnect** | Wishbone |
 | **Peripherals** | UART (Interrupt-driven), GPIO, MTIME, Debug Interface |
 
 ---
@@ -70,7 +70,7 @@ The verification methodologies used in this core are detailed in the following c
 * **Python:** 3.x (with `pyserial` for hardware-in-the-loop tests)
 
 ### **Hardware Requirements**
-* **FPGA:** Nexys-4-DDR (Artix-7)
+* **FPGA:** Nexys-4-DDR (Artix-7 100t) or Nexys Video (Artix-7 200t)
 * **Vivado Version:** Verified on **Vivado 2025.2**
 
 ---
