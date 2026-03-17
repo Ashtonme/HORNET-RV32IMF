@@ -21,11 +21,9 @@ This project is the result of collaborative engineering at the **Istanbul Techni
 * **Salih Daysal**
 * **Mehmet Emin Tuzcu**
 
-### 🧪 Verification & Organization
+### 🧪 Verification
 * **Deniz Zakir Eroglu** - [GitHub](https://github.com/dezariye)
-* **Mete Kaan Özden**
-
-* **Yusuf Tekin** - [GitHub](https://github.com/jsphtkn)
+* **Mete Kaan Özden** - [GitHub](https://github.com/mkozden)
 
 ### ✏️ Organization
 * **Deniz Zakir Eroglu** - [GitHub](https://github.com/dezariye)
@@ -36,7 +34,10 @@ This project is the result of collaborative engineering at the **Istanbul Techni
 🔗 **[HORNET-RV32IMF-For-AI-Applications](https://github.com/GSTL-ITU/HORNET-RV32IMF-For-AI-Applications)**
 
 ### 📚 Academic Publications
-The verification methodologies used in this core are detailed in the following symposium paper:
+The initial design of Hornet core is detailed in the following conference paper:
+> Y. S. Tozlu, Y. Yilmaz, B. Ors, “Design and Implementation Of a 32-Bit RISC-V Core”, 12th International Conference on Electrical and Electronics Engineering (ELECO), 2021. 
+
+The verification methodologies used in this core are detailed in the following conference paper:
 > D. Z. Eroglu, M. K. Ozden, B. Ors, “Creating Verification Environment Using RISCV-DV With Open and Closed Source Tools”, 9th International Symposium on Multidisciplinary Studies and Innovative Technologies (ISMSIT), 2025.
 
 ---
