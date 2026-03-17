@@ -2,7 +2,7 @@
 
 module fpga_top (
     input  wire M100_clk_i,
-    input  wire reset_i,
+    input  wire rst_ni,
     input  wire rx_i,
     output wire tx_o,
     output wire uart_debug_stb,
@@ -32,7 +32,7 @@ module fpga_top (
     wire [7:0] rx_byte;
 
     assign tx_o = tx_o_tmp;
-    assign reset = loader_reset & reset_i;
+    assign reset = loader_reset & rst_ni;
 
     // Clocking
     wire clk_i, locked;
@@ -148,7 +148,7 @@ module fpga_top (
             
             // Special reset condition for Loader (Slave 4)
             if (i == 4) begin
-                assign wb_rst_i[i] = ~reset_i;
+                assign wb_rst_i[i] = ~rst_ni;
             end else begin
                 assign wb_rst_i[i] = ~reset;
             end
