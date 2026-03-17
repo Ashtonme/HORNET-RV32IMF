@@ -1,4 +1,4 @@
-module core(input reset_i, //active-low reset
+module core(input rst_ni, //active-low reset
 
             input clk_i,
 
@@ -260,9 +260,9 @@ assign csr_stall = !csr_wen_ID &&
                    (csr_addr_ID == csr_addr_MEM && !csr_wen_MEM) ||
                    (csr_addr_ID == csr_addr_WB && !csr_wen_WB));
 
-always @(posedge clk_i or negedge reset_i)
+always @(posedge clk_i or negedge rst_ni)
 begin
-	if(!reset_i)
+	if(!rst_ni)
 		csr_pc_input <= reset_vector;
 	else
 		csr_pc_input <= csr_pcin_mux2_o;
@@ -270,7 +270,7 @@ end
 //instantiate CSR Unit
 csr_unit #(.reset_vector(reset_vector)) CSR_UNIT 
                 (.clk_i(clk_i),
-                  .reset_i(reset_i),
+                  .rst_ni(rst_ni),
                   .pc_i(csr_pc_input),
                   .csr_r_addr_i(IFID_preg_instr[31:20]),
                   .csr_w_addr_i(csr_addr_WB),
@@ -316,14 +316,14 @@ assign mux2_o_IF = mux2_ctrl_IF ? pc_o : pc_o + 32'd4; //this mux is responsible
 assign mux3_o_IF = mux3_ctrl_IF ? branch_target_addr : mux2_o_IF; //branch mux
 assign mux4_o_IF = mux4_ctrl_IF ? mux3_o_IF : mux1_o_IF;
 
-assign pc_i = reset_i ? mux4_o_IF : reset_vector;
+assign pc_i = rst_ni ? mux4_o_IF : reset_vector;
 assign instr_addr_o = pc_i;
 
 assign stall_IF = hazard_stall | muldiv_stall_EX | fpu_stall_EX | misaligned_access | data_stall_i | csr_stall;
 
-always @(posedge clk_i or negedge reset_i)
+always @(posedge clk_i or negedge rst_ni)
 begin
-	if(!reset_i)
+	if(!rst_ni)
 	begin
 		//reset pc to reset vector.
 		pc_o <= reset_vector;
@@ -442,9 +442,9 @@ imm_decoder     IMM_DEC	    (.instr_in(imm_dec_i), .imm_out(imm_dec_o));
 
 //write to register file
 integer i;
-always @(negedge clk_i or negedge reset_i)
+always @(negedge clk_i or negedge rst_ni)
 begin
-	if(!reset_i)
+	if(!rst_ni)
 	begin
 		for(i=1; i < 32; i = i+1)
 			register_bank[i] <= 32'b0; //reset all registers to 0.
@@ -463,9 +463,9 @@ begin
     end            
 end
 
-always @(posedge clk_i or negedge reset_i)
+always @(posedge clk_i or negedge rst_ni)
 begin
-	if(!reset_i)
+	if(!rst_ni)
 	begin
 		IDEX_preg_wb <= 9'h0c;
 		IDEX_preg_mem <= 3'b1;
@@ -573,7 +573,7 @@ end
 //instantiate MULDIV
 MULDIV_top MULDIV(.clk(clk_i),
                   .start(muldiv_start),
-                  .reset(reset_i),
+                  .reset(rst_ni),
                   .in_A(mux2_o_EX),
                   .in_B(mux4_o_EX),
                   .op_div(op_div),
@@ -679,7 +679,7 @@ fpu_top fpu_top
 (
     //inputs
     .clk(clk_i),
-    .reset(reset_i),
+    .reset(rst_ni),
     .start(fpu_start),
     .op(fpu_func),
     .rounding_mode(fpu_rm),
@@ -708,9 +708,9 @@ assign branch_target_addr[0] = (!mux5_ctrl_EX & J) ? 1'b0 : branch_addr_calc[0];
 assign instr_addr_misaligned = take_branch & (branch_target_addr[1:0] != 2'd0);
 assign stall_EX = muldiv_stall_EX | fpu_stall_EX | data_stall_i;
 
-always @(posedge clk_i or negedge reset_i) //clock the outputs to the pipeline register
+always @(posedge clk_i or negedge rst_ni) //clock the outputs to the pipeline register
 begin
-	if(!reset_i)
+	if(!rst_ni)
 	begin
 		EXMEM_preg_wb <= 9'h0c;
 		EXMEM_preg_mem <= 3'b1;
@@ -776,7 +776,7 @@ end
 //END EX STAGE-----------------------------------------------------------------------------
 
 load_store_unit LS_UNIT (.clk_i(clk_i),
-                         .reset_i(reset_i),
+                         .rst_ni(rst_ni),
                          .addr_i(aluout_EX),
                          .data_i(mux4_o_EX),
                          .length_EX_i(mem_length_EX),
@@ -813,9 +813,9 @@ assign addr_bits_MEM = EXMEM_preg_addr_bits;
 assign csr_wen_MEM = wb_MEM[2];
 assign forward_fpu_alu_mem_sel = (IDEX_preg_wb[8] && EXMEM_preg_wb[8]) | (EXMEM_preg_wb[8] && wb_MEM[8])  ;
 
-always @(posedge clk_i or negedge reset_i)
+always @(posedge clk_i or negedge rst_ni)
 begin
-	if(!reset_i)
+	if(!rst_ni)
 	begin
 		MEMWB_preg_wb <= 9'h0c;
         MEMWB_preg_mem <= 3'b1;

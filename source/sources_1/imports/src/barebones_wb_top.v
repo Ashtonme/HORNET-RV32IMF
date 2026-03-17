@@ -1,6 +1,6 @@
 module barebones_wb_top (
     input  wire        clk_i,
-    input  wire        reset_i,
+    input  wire        rst_ni,
     input  wire        meip_i,
     input  wire [15:0] fast_irq_i,
     output wire        irq_ack_o
@@ -92,7 +92,7 @@ module barebones_wb_top (
     assign wb_adr_i[0] = inst_wb_adr_o;
     assign wb_dat_i[0] = inst_wb_dat_o;
     assign wb_sel_i[0] = inst_wb_sel_o;
-    assign wb_rst_i[0] = ~reset_i;
+    assign wb_rst_i[0] = ~rst_ni;
     assign wb_clk_i[0] = clk_i;
     
     assign inst_wb_dat_i = wb_dat_o[0];
@@ -108,7 +108,7 @@ module barebones_wb_top (
             assign wb_adr_i[i] = data_wb_adr_o;
             assign wb_dat_i[i] = data_wb_dat_o;
             assign wb_sel_i[i] = data_wb_sel_o;
-            assign wb_rst_i[i] = ~reset_i;
+            assign wb_rst_i[i] = ~rst_ni;
             assign wb_clk_i[i] = clk_i;
         end
     endgenerate
@@ -155,7 +155,7 @@ module barebones_wb_top (
     assign data_wb_stall_i = r_data_wb_stall_i;
     assign data_wb_err_i   = r_data_wb_err_i;
     assign data_wb_clk_i   = clk_i;
-    assign data_wb_rst_i   = ~reset_i;
+    assign data_wb_rst_i   = ~rst_ni;
 
     // -------------------------------------------------------------------------
     // Tracer Signals
@@ -169,15 +169,13 @@ module barebones_wb_top (
     // Module Instantiations
     // -------------------------------------------------------------------------
 
-    core_wb #(
-        .reset_vector(reset_vector)
-    ) core0 (
+    core_wb #(.reset_vector(reset_vector)) core0 (
+        .rst_ni(rst_ni),
         .clk_i(clk_i),
-        .reset_i(reset_i),
 
         // Wishbone interface for data memory
         .data_wb_cyc_o(data_wb_cyc_o),
-        .data_wb_stb_o(data_wb_stb_o),memory_inst
+        .data_wb_stb_o(data_wb_stb_o),
         .data_wb_we_o(data_wb_we_o),
         .data_wb_adr_o(data_wb_adr_o),
         .data_wb_dat_o(data_wb_dat_o),

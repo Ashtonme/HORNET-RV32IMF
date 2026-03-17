@@ -207,7 +207,7 @@ module fpga_top (
         .reset_vector(32'h0)
     ) core0 (
         .clk_i(clk_i),
-        .reset_i(reset), // active-low reset
+        .rst_ni(reset), // active-low reset
 
         // Wishbone interface for data memory
         .data_wb_cyc_o(data_wb_cyc_o),

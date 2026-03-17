@@ -2,14 +2,14 @@
 
 module barebones_top_tb();
 
-reg reset_i, clk_i;
+reg rst_ni, clk_i;
 wire irq_ack_o;
 reg meip_i;
 reg [15:0] fast_irq_i;
 integer i;
 
 barebones_wb_top uut(
-    .reset_i(reset_i), 
+    .rst_ni(rst_ni), 
     .clk_i(clk_i), 
     .meip_i(meip_i), 
     .fast_irq_i(fast_irq_i), 
@@ -22,7 +22,7 @@ always begin
 end
 
 initial begin
-    reset_i = 1'b0; fast_irq_i = 16'b0; meip_i = 1'b0;
+    rst_ni = 1'b0; fast_irq_i = 16'b0; meip_i = 1'b0;
     
     // Changed for Vivado_2025.2++: memory_2rw_wb -> memory_inst
     for (i = 0; i < uut.memory_inst.RAM_DEPTH; i = i + 1) begin
@@ -34,7 +34,7 @@ initial begin
     $readmemh("memory_init_tb.mem", uut.memory_inst.mem); // read data after reset, because reset initializes memory to 0
     
     #25;
-    reset_i = 1'b1; // Wait a cycle so that the instruction memory is ready
+    rst_ni = 1'b1; // Wait a cycle so that the instruction memory is ready
 end
 
 endmodule
